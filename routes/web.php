@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/upload', function () {
+    return view('upload');
+});
+
+Route::post('/save', 'Image\ImageController@save');
+
+Route::get('/delete','Image\ImageController@delete');
+
+Route::get('/list','Image\ImageController@imageList');
