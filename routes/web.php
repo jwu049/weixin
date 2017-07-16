@@ -21,6 +21,6 @@ Route::get('/upload', function () {
 
 Route::post('/save', 'Image\ImageController@save');
 
-Route::get('/delete','Image\ImageController@delete');
+Route::post('/delete','Image\ImageController@delete');
 
 Route::get('/list','Image\ImageController@imageList');
