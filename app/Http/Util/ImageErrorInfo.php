@@ -11,6 +11,8 @@ class ImageErrorInfo
     const UPLOAD_FAILURE = -1;
     const TYPE_NOT_MATCH = -2;
     const SAVE_FAILURE = -3;
+    const FILE_NAME_IS_EMPTY = -4;
+    const FILE_NOT_EXISTED = -5;
 
     public static $error_message = null;
 
@@ -38,6 +40,8 @@ class ImageErrorInfo
             self::UPLOAD_FAILURE => '图片上传失败！',
             self::TYPE_NOT_MATCH => '图片类型不匹配！',
             self::SAVE_FAILURE => '图片保存失败！',
+            self::FILE_NAME_IS_EMPTY => '图片名称为空！',
+            self::FILE_NOT_EXISTED => '图片不存在！',
         ];
     }
 }

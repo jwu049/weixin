@@ -55,7 +55,24 @@ class ImageController extends Controller
      */
     public function delete(Request $request)
     {
-        $path = $request->file();
+        $request_time = time();
+        $file_path = $request->get('filePath');
+        if(empty($file_path)) {
+            ApiOutputTool::outputError(
+                ImageErrorInfo::FILE_NOT_EXISTED,
+                ImageErrorInfo::getErrorMsg(ImageErrorInfo::FILE_NOT_EXISTED)
+            );
+        }
+        $file_info = explode('/', $file_path);
+        $file_name = array_pop($file_info);
+        $status = Storage::disk('public')->delete($file_name);
+        if(!$status) {
+            ApiOutputTool::outputError(
+                ImageErrorInfo::FILE_NOT_EXISTED,
+                ImageErrorInfo::getErrorMsg(ImageErrorInfo::FILE_NOT_EXISTED)
+            );
+        }
+        ApiOutputTool::outputData(0, '', $request_time);
     }
 
     /**

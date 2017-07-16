@@ -31,7 +31,7 @@ class ApiOutputTool
     public static function outputError($error_code, $error_msg)
     {
         $result = [
-            'status' => $error_code,
+            'code' => $error_code,
             'msg' => $error_msg ? $error_msg : ImageErrorInfo::getErrorMsg($error_code)
         ];
 
@@ -50,7 +50,7 @@ class ApiOutputTool
     public static function outputData($data, $msg = '', $request_time=0, $java_style = false)
     {
         $result = array(
-            'status' => CommonErrorInfo::SUCCESS,
+            'code' => CommonErrorInfo::SUCCESS,
             'msg' => $msg ? $msg : CommonErrorInfo::getErrorMsg(CommonErrorInfo::SUCCESS),
             'requestTime' => self::getRequestTime($request_time),
             'data' => $data,
@@ -96,7 +96,7 @@ class ApiOutputTool
 
     public static function doParamError()
     {
-        self::$result['status'] = CommonErrorInfo::ERROR_URL;
+        self::$result['code'] = CommonErrorInfo::ERROR_URL;
         self::$result['msg'] = CommonErrorInfo::getErrorMsg(CommonErrorInfo::ERROR_URL);
 
         echo json_encode(self::$result);
