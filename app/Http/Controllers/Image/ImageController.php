@@ -44,8 +44,9 @@ class ImageController extends Controller
                 ImageErrorInfo::getErrorMsg(ImageErrorInfo::SAVE_FAILURE)
             );
         }
-
-        ApiOutputTool::outputData('0', '', $request_time);
+        $image_url = asset('storage/'.$file_name);
+        $data = ['imageUrl' => $image_url];
+        ApiOutputTool::outputData($data, '', $request_time);
     }
 
     /**
